@@ -12,13 +12,13 @@
 
     :root {
       --pink:   #E51F77;
-      --green:  #1C7E75;
-      --yellow: #EEB500;
+      --green:  #0A7C6E;
+      --yellow: #D78F1B;
       --orange: #E07830;
       --red:    #C00000;
-      --purple: #7030A0;
+      --purple: #6E026F;
       --haz:    #7B2C2C;
-      --bg:     #F4F5F4;
+      --bg:     #E8EAE8;
       --white:  #FFFFFF;
       --border: #ECEEEC;
       --dark:   #1A1A18;
@@ -116,9 +116,9 @@
       white-space: nowrap;
     }
     #header-sub {
-      font-size: clamp(0.5rem, 0.78vw, 0.7rem);
-      font-weight: 400;
-      letter-spacing: 0.04em;
+      font-size: clamp(0.62rem, 0.95vw, 0.88rem);
+      font-weight: 500;
+      letter-spacing: 0.03em;
       color: var(--mid);
       margin-top: 0.5em;
       white-space: nowrap;
@@ -151,8 +151,8 @@
     #body {
       display: grid;
       grid-template-columns: minmax(0, 1.7fr) minmax(0, 2.8fr) minmax(0, 2fr);
-      gap: clamp(0.8rem, 1.3vw, 1.5rem);
-      padding: 0 clamp(1.5rem, 3vw, 3.5rem) clamp(0.8rem, 1.3vw, 1.5rem);
+      gap: clamp(1rem, 1.5vw, 1.8rem);
+      padding: clamp(1.2rem, 2vh, 2rem) clamp(2.5rem, 4.5vw, 5rem) clamp(1.2rem, 2vh, 2rem);
       overflow: hidden; min-height: 0;
     }
 
@@ -167,11 +167,11 @@
       transition: background 1.2s ease;
     }
     #aqi-eyebrow {
-      font-size: clamp(0.5rem, 0.8vw, 0.68rem);
-      font-weight: 600;
-      letter-spacing: 0.32em;
+      font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+      font-weight: 700;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.92);
+      color: rgba(255,255,255,0.95);
     }
     #aqi-number {
       font-size: clamp(6rem, 14vw, 14rem);
@@ -181,19 +181,19 @@
       color: #fff;
     }
     #aqi-status {
-      font-size: clamp(1rem, 2.2vw, 2.2rem);
-      font-weight: 700;
+      font-size: clamp(1.4rem, 2.8vw, 2.8rem);
+      font-weight: 800;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: #fff;
     }
     #aqi-desc {
-      font-size: clamp(0.5rem, 0.82vw, 0.7rem);
-      color: rgba(255,255,255,0.88);
+      font-size: clamp(0.7rem, 1.1vw, 1rem);
+      color: rgba(255,255,255,0.9);
       text-align: center;
       line-height: 1.5;
-      max-width: 22ch;
-      font-weight: 400;
+      max-width: 24ch;
+      font-weight: 500;
     }
     .aqi-hr {
       width: 60%; height: 1px;
@@ -264,16 +264,16 @@
     }
     .poll-header { display: flex; align-items: center; gap: 0.5em; }
     .poll-name {
-      font-size: clamp(0.6rem, 0.95vw, 0.8rem);
-      font-weight: 600; letter-spacing: 0.02em; color: var(--dark);
+      font-size: clamp(0.8rem, 1.25vw, 1.1rem);
+      font-weight: 700; letter-spacing: 0.02em; color: var(--dark);
     }
     .poll-info {
-      width: clamp(11px, 0.95vw, 15px);
-      height: clamp(11px, 0.95vw, 15px);
+      width: clamp(13px, 1.1vw, 18px);
+      height: clamp(13px, 1.1vw, 18px);
       border: 1.3px solid var(--dim);
       border-radius: 50%;
       display: inline-flex; align-items: center; justify-content: center;
-      font-size: 0.55em; font-weight: 700;
+      font-size: 0.6em; font-weight: 700;
       color: var(--dim); font-family: serif; flex-shrink: 0;
     }
     .poll-value-row {
@@ -287,19 +287,19 @@
       transition: color 0.8s ease; color: var(--green);
     }
     .poll-unit {
-      font-size: clamp(0.5rem, 0.78vw, 0.68rem);
-      color: var(--mid); font-weight: 400; padding-bottom: 0.2em;
+      font-size: clamp(0.55rem, 0.88vw, 0.78rem);
+      color: var(--mid); font-weight: 500; padding-bottom: 0.2em;
     }
     .poll-level {
-      font-size: clamp(0.58rem, 0.92vw, 0.82rem);
-      font-weight: 700; letter-spacing: 0.04em;
+      font-size: clamp(0.78rem, 1.18vw, 1.05rem);
+      font-weight: 800; letter-spacing: 0.05em;
       text-transform: uppercase;
       transition: color 0.8s ease;
       margin-top: clamp(0.15rem, 0.3vh, 0.25rem);
     }
     .poll-avg {
-      font-size: clamp(0.42rem, 0.65vw, 0.56rem);
-      color: var(--mid); font-weight: 400; margin-top: 0.1em;
+      font-size: clamp(0.55rem, 0.85vw, 0.74rem);
+      color: var(--mid); font-weight: 500; margin-top: 0.15em;
     }
     .spark-wrap {
       flex: 1; display: flex; flex-direction: column;
@@ -327,8 +327,8 @@
       overflow: hidden; min-width: 0;
     }
     #map-title {
-      font-size: clamp(0.55rem, 0.88vw, 0.78rem);
-      font-weight: 600; letter-spacing: 0.05em;
+      font-size: clamp(0.78rem, 1.2vw, 1.08rem);
+      font-weight: 700; letter-spacing: 0.05em;
       text-transform: uppercase; color: var(--dark); flex-shrink: 0;
     }
     #map-area {
@@ -348,31 +348,31 @@
     }
     .mpin-bubble {
       border-radius: 50%; background: var(--yellow);
-      width: clamp(28px, 3vw, 42px); height: clamp(28px, 3vw, 42px);
+      width: clamp(36px, 4vw, 58px); height: clamp(36px, 4vw, 58px);
       display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: clamp(0.6rem, 0.95vw, 0.85rem);
-      color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+      font-weight: 800; font-size: clamp(0.8rem, 1.25vw, 1.15rem);
+      color: #fff; box-shadow: 0 3px 12px rgba(0,0,0,0.22);
     }
     .mpin-tail {
       width: 0; height: 0;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 7px solid; margin-top: -1px;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 10px solid; margin-top: -1px;
     }
     .mpin-lbl {
-      margin-top: 1px; background: #fff;
-      border-radius: 6px; padding: 3px 7px;
-      font-size: clamp(0.36rem, 0.58vw, 0.48rem);
-      font-weight: 500; color: var(--dark); text-align: center;
-      white-space: nowrap; box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+      margin-top: 2px; background: #fff;
+      border-radius: 8px; padding: 4px 10px;
+      font-size: clamp(0.55rem, 0.85vw, 0.78rem);
+      font-weight: 600; color: var(--dark); text-align: center;
+      white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.14);
     }
     #pin-main .mpin-bubble {
-      width: clamp(36px, 4vw, 56px); height: clamp(36px, 4vw, 56px);
-      font-size: clamp(0.75rem, 1.2vw, 1.05rem); font-weight: 700;
+      width: clamp(46px, 5.2vw, 72px); height: clamp(46px, 5.2vw, 72px);
+      font-size: clamp(1rem, 1.6vw, 1.45rem); font-weight: 800;
     }
     #pin-main .mpin-lbl {
-      font-size: clamp(0.4rem, 0.65vw, 0.55rem);
-      font-weight: 600; padding: 4px 9px;
+      font-size: clamp(0.62rem, 0.95vw, 0.88rem);
+      font-weight: 700; padding: 5px 12px;
     }
 
     #footer {
@@ -521,17 +521,13 @@
         <div id="header-titles">
           <div id="header-main">Real Time Air Quality Index</div>
           <div id="header-sub">
+            Outdoor air quality from the nearest monitoring station to the project
+            <span class="header-sep-text">|</span>
             US EPA Standard
             <span class="header-sep-text">|</span>
             Updated on <b id="updated-val">—</b>
           </div>
         </div>
-      </div>
-      <div id="station-pill">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
-        </svg>
-        <span id="station-name">Locating&hellip;</span>
       </div>
     </header>
 
@@ -636,23 +632,23 @@
             </g>
           </svg>
           <div class="mpin" id="pin-main" style="left:50%;top:48%;">
-            <div class="mpin-bubble" id="pin-bubble" style="background:#1C7E75;">—</div>
-            <div class="mpin-tail" id="pin-tail" style="border-top-color:#1C7E75;"></div>
+            <div class="mpin-bubble" id="pin-bubble" style="background:#0A7C6E;">—</div>
+            <div class="mpin-tail" id="pin-tail" style="border-top-color:#0A7C6E;"></div>
             <div class="mpin-lbl">Culture Chula</div>
           </div>
           <div class="mpin" style="left:22%;top:26%;">
-            <div class="mpin-bubble" style="background:#EEB500;">68</div>
-            <div class="mpin-tail" style="border-top-color:#EEB500;"></div>
+            <div class="mpin-bubble" style="background:#D78F1B;">68</div>
+            <div class="mpin-tail" style="border-top-color:#D78F1B;"></div>
             <div class="mpin-lbl">Siam Square</div>
           </div>
           <div class="mpin" style="left:22%;top:78%;">
-            <div class="mpin-bubble" style="background:#1C7E75;">38</div>
-            <div class="mpin-tail" style="border-top-color:#1C7E75;"></div>
+            <div class="mpin-bubble" style="background:#0A7C6E;">38</div>
+            <div class="mpin-tail" style="border-top-color:#0A7C6E;"></div>
             <div class="mpin-lbl">Rama 4 Rd.</div>
           </div>
           <div class="mpin" style="left:78%;top:80%;">
-            <div class="mpin-bubble" style="background:#1C7E75;">41</div>
-            <div class="mpin-tail" style="border-top-color:#1C7E75;"></div>
+            <div class="mpin-bubble" style="background:#0A7C6E;">41</div>
+            <div class="mpin-tail" style="border-top-color:#0A7C6E;"></div>
             <div class="mpin-lbl">Lumpini Park</div>
           </div>
         </div>
@@ -692,11 +688,11 @@ const DEFAULT_PLAYLIST = [
  *  AQI LOGIC (same as before)
  * ═══════════════════════════════════════════════════════════════════ */
 const LEVELS = [
-  { max: 50,  color:'#1C7E75', label:'Good',           desc:'Air quality is satisfactory and poses little to no risk.' },
-  { max: 100, color:'#EEB500', label:'Moderate',        desc:'Acceptable quality. Unusually sensitive individuals may be affected.' },
+  { max: 50,  color:'#0A7C6E', label:'Good',           desc:'Air quality is satisfactory and poses little to no risk.' },
+  { max: 100, color:'#D78F1B', label:'Moderate',        desc:'Acceptable quality. Unusually sensitive individuals may be affected.' },
   { max: 150, color:'#E07830', label:'Sensitive',       desc:'Sensitive groups should reduce prolonged outdoor exertion.' },
   { max: 200, color:'#C00000', label:'Unhealthy',       desc:'Everyone may begin to experience health effects.' },
-  { max: 300, color:'#7030A0', label:'Very Unhealthy',  desc:'Health alert — everyone may experience serious effects.' },
+  { max: 300, color:'#6E026F', label:'Very Unhealthy',  desc:'Health alert — everyone may experience serious effects.' },
   { max: 999, color:'#7B2C2C', label:'Hazardous',       desc:'Emergency conditions. Entire population is affected.' },
 ];
 
@@ -705,21 +701,21 @@ function getLevel(v) { return LEVELS.find(l => v <= l.max) || LEVELS[5]; }
 function pollLevel(val, type) {
   if (val == null) return { label:'—', color:'#A5A5A2' };
   if (type === 'pm25') {
-    if (val <= 12)  return { label:'Good', color:'#1C7E75' };
-    if (val <= 35)  return { label:'Moderate', color:'#EEB500' };
+    if (val <= 12)  return { label:'Good', color:'#0A7C6E' };
+    if (val <= 35)  return { label:'Moderate', color:'#D78F1B' };
     if (val <= 55)  return { label:'Sensitive', color:'#E07830' };
     if (val <= 150) return { label:'Unhealthy', color:'#C00000' };
-    if (val <= 250) return { label:'Very Unhealthy', color:'#7030A0' };
+    if (val <= 250) return { label:'Very Unhealthy', color:'#6E026F' };
     return { label:'Hazardous', color:'#7B2C2C' };
   }
   if (type === 'pm10') {
-    if (val <= 54)  return { label:'Good', color:'#1C7E75' };
-    if (val <= 154) return { label:'Moderate', color:'#EEB500' };
+    if (val <= 54)  return { label:'Good', color:'#0A7C6E' };
+    if (val <= 154) return { label:'Moderate', color:'#D78F1B' };
     if (val <= 254) return { label:'Sensitive', color:'#E07830' };
     return { label:'Unhealthy', color:'#C00000' };
   }
-  if (val <= 50)  return { label:'Good', color:'#1C7E75' };
-  if (val <= 100) return { label:'Moderate', color:'#EEB500' };
+  if (val <= 50)  return { label:'Good', color:'#0A7C6E' };
+  if (val <= 100) return { label:'Moderate', color:'#D78F1B' };
   return { label:'Unhealthy', color:'#C00000' };
 }
 
@@ -814,8 +810,6 @@ async function fetchAQI() {
     $('meta-hum').textContent  = h != null ? fmt(h,0) : '—';
 
     const sn = d.city?.name || 'Nearby Station';
-    const snShort = sn.replace(/\s*\([^)]*\)\s*/g, '').trim();
-    $('station-name').textContent   = snShort;
     $('footer-station').textContent = sn;
     $('updated-val').textContent    = fmtTime();
 
