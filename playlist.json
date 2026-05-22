@@ -1,7 +1,7 @@
 [
   { "type": "dashboard", "duration": 30 },
-  { "type": "image", "src": "media/PicA.png", "duration": 15 }
-  { "type": "image", "src": "media/PicB.png", "duration": 15 }
-  { "type": "image", "src": "media/PicC.png", "duration": 15 }
-  { "type": "image", "src": "media/PicD.png", "duration": 15 }
+  { "type": "image", "src": "media./PicA.png", "duration": 15 }
+  { "type": "image", "src": "media./PicB.png", "duration": 15 }
+  { "type": "image", "src": "media./PicC.png", "duration": 15 }
+  { "type": "image", "src": "media./PicD.png", "duration": 15 }
 ]
