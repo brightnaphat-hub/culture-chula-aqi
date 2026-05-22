@@ -483,6 +483,181 @@
       100% { opacity: 1; transform: translateY(0); }
     }
     .num-anim { animation: numIn 0.45s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+    /* ══════════════════════════════════════════════
+       MOBILE & PORTRAIT RESPONSIVE
+       Triggers when screen is narrow (phones, tablets in portrait)
+    ══════════════════════════════════════════════ */
+    @media (max-width: 900px), (orientation: portrait) {
+      html, body { overflow-y: auto; overflow-x: hidden; }
+
+      #pink-bar { width: 6px; }
+
+      #app {
+        width: calc(100vw - 6px);
+        height: auto;
+        min-height: 100vh;
+        grid-template-rows: auto auto auto;
+      }
+
+      /* HEADER — stack and shrink */
+      #header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        padding: 1rem 1.2rem;
+        min-height: 0;
+      }
+      #header-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        width: 100%;
+      }
+      #logo { height: 56px; }
+      #header-main {
+        font-size: clamp(1.1rem, 5.5vw, 1.8rem);
+        white-space: normal;
+        line-height: 1.15;
+      }
+      #header-sub {
+        white-space: normal;
+        font-size: clamp(0.62rem, 2.6vw, 0.85rem);
+        line-height: 1.5;
+      }
+      .header-sep-text { display: none; }
+      #header-sub br { display: block; }
+
+      /* BODY — stack vertically */
+      #body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        padding: 1rem 1.2rem;
+        gap: 1rem;
+        height: auto;
+        overflow: visible;
+      }
+
+      /* LEFT AQI — full width, fixed height */
+      #card-aqi {
+        padding: 1.5rem 1rem;
+        min-height: 360px;
+      }
+      #aqi-eyebrow {
+        font-size: clamp(0.7rem, 3vw, 0.9rem);
+      }
+      #aqi-number {
+        font-size: clamp(6rem, 28vw, 10rem);
+      }
+      #aqi-status {
+        font-size: clamp(1.4rem, 6vw, 2.2rem);
+      }
+      #aqi-desc {
+        font-size: clamp(0.85rem, 3.5vw, 1rem);
+        max-width: 90%;
+      }
+      #aqi-meta {
+        gap: clamp(2rem, 8vw, 4rem);
+      }
+      .meta-icon-wrap {
+        width: 32px; height: 32px;
+      }
+      .meta-lbl {
+        font-size: clamp(0.55rem, 2.2vw, 0.7rem);
+      }
+      .meta-val {
+        font-size: clamp(1.3rem, 5.5vw, 1.8rem);
+      }
+      #aqi-src {
+        font-size: clamp(0.5rem, 2vw, 0.6rem);
+      }
+
+      /* MIDDLE POLL — 2x2 grid */
+      #poll-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 0.8rem;
+      }
+      .poll-card {
+        padding: 0.9rem;
+        min-height: 180px;
+      }
+      .poll-name {
+        font-size: clamp(0.85rem, 3.5vw, 1.05rem);
+      }
+      .poll-value {
+        font-size: clamp(1.8rem, 8vw, 2.8rem);
+      }
+      .poll-unit {
+        font-size: clamp(0.62rem, 2.4vw, 0.78rem);
+      }
+      .poll-level {
+        font-size: clamp(0.8rem, 3.2vw, 1rem);
+      }
+      .poll-avg {
+        font-size: clamp(0.55rem, 2.2vw, 0.7rem);
+      }
+      .sparkline {
+        height: 40px;
+      }
+      .spark-lbl span {
+        font-size: clamp(0.45rem, 1.8vw, 0.55rem);
+      }
+
+      /* MAP — full width */
+      #card-map {
+        padding: 1rem;
+        min-height: 340px;
+      }
+      #map-title {
+        font-size: clamp(0.85rem, 3.5vw, 1.05rem);
+      }
+      .mpin-bubble {
+        width: 36px; height: 36px;
+        font-size: 0.85rem;
+      }
+      .mpin-lbl {
+        font-size: 0.6rem;
+      }
+      #pin-main .mpin-bubble {
+        width: 48px; height: 48px;
+        font-size: 1.05rem;
+      }
+      #pin-main .mpin-lbl {
+        font-size: 0.65rem;
+      }
+
+      /* FOOTER */
+      #footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+        padding: 0.7rem 1.2rem;
+        height: auto;
+      }
+      #footer-txt {
+        font-size: clamp(0.55rem, 2.2vw, 0.7rem);
+        line-height: 1.5;
+      }
+      #footer-cd {
+        font-size: clamp(0.5rem, 2vw, 0.62rem);
+      }
+
+      /* Fullscreen button — bigger tap target */
+      #fs-btn {
+        width: 44px; height: 44px;
+        bottom: 1rem; right: 1rem;
+      }
+    }
+
+    /* Very small phones */
+    @media (max-width: 480px) {
+      #poll-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+      }
+      .poll-card { min-height: 160px; }
+    }
   </style>
 </head>
 <body>
@@ -1019,8 +1194,14 @@ document.addEventListener('webkitfullscreenchange', updateFsIcon);
   }, 5 * 60 * 1000);
 })();
 
-['wheel','touchmove'].forEach(ev =>
-  document.addEventListener(ev, e => e.preventDefault(), {passive:false}));
+// Only lock scrolling on landscape/wide screens (TV/desktop)
+// On mobile portrait, allow normal scrolling
+const isMobileLayout = () => window.matchMedia('(max-width: 900px), (orientation: portrait)').matches;
+
+if (!isMobileLayout()) {
+  ['wheel','touchmove'].forEach(ev =>
+    document.addEventListener(ev, e => e.preventDefault(), {passive:false}));
+}
 document.addEventListener('keydown', e => {
   if (['ArrowUp','ArrowDown','Space','PageUp','PageDown'].includes(e.code)) e.preventDefault();
 });
