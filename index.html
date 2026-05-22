@@ -733,8 +733,11 @@ function setNum(el, val) {
 }
 
 function fmtTime(s) {
+  // Always use the LOCAL clock at fetch time — WAQI's reported time can be
+  // in a different timezone and cause confusion. We just show "when this
+  // dashboard last refreshed" in the user's local time.
   try {
-    const d = s ? new Date(s) : new Date();
+    const d = new Date();  // local now
     return d.toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'})
          + ' ' + d.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit', hour12:false});
   } catch { return new Date().toLocaleString('en-GB'); }
@@ -814,7 +817,7 @@ async function fetchAQI() {
     const snShort = sn.replace(/\s*\([^)]*\)\s*/g, '').trim();
     $('station-name').textContent   = snShort;
     $('footer-station').textContent = sn;
-    $('updated-val').textContent    = fmtTime(d.time?.s || d.time?.iso || null);
+    $('updated-val').textContent    = fmtTime();
 
     updatePollCard('pc-pm25','pm25-val','pm25-lv','sp-pm25', pv(iaqi,'pm25'), 'pm25');
     updatePollCard('pc-pm10','pm10-val','pm10-lv','sp-pm10', pv(iaqi,'pm10'), 'pm10');
@@ -865,11 +868,17 @@ function buildSlides() {
     const slide = document.createElement('div');
     slide.className = 'slide media-slide';
     slide.dataset.playlistIdx = idx;
+    slide.dataset.broken = 'false';
 
     if (item.type === 'image') {
       const img = document.createElement('img');
       img.src = item.src;
-      img.onerror = () => { console.error('[Media] Failed to load image:', item.src); };
+      img.onerror = () => {
+        console.error('[Media] Failed to load image:', item.src);
+        slide.dataset.broken = 'true';
+        // If this broken slide is currently active, skip to next immediately
+        if (slide.classList.contains('active')) next();
+      };
       slide.appendChild(img);
     } else if (item.type === 'video') {
       const video = document.createElement('video');
@@ -877,7 +886,11 @@ function buildSlides() {
       video.muted = true;
       video.playsInline = true;
       video.preload = 'auto';
-      video.onerror = () => { console.error('[Media] Failed to load video:', item.src); };
+      video.onerror = () => {
+        console.error('[Media] Failed to load video:', item.src);
+        slide.dataset.broken = 'true';
+        if (slide.classList.contains('active')) next();
+      };
       slide.appendChild(video);
     }
 
@@ -910,7 +923,14 @@ function showSlide(idx) {
   }
 
   if (!targetEl) {
-    // skip to next if element missing (e.g. failed to load)
+    // skip to next if element missing
+    next();
+    return;
+  }
+
+  // Skip slides marked as broken (image/video failed to load)
+  if (targetEl.dataset.broken === 'true') {
+    console.warn('[Slideshow] Skipping broken slide:', item.src);
     next();
     return;
   }
@@ -923,12 +943,9 @@ function showSlide(idx) {
     if (video) {
       video.play().catch(err => console.warn('[Video] play() rejected:', err));
       if (item.duration && item.duration > 0) {
-        // hard timeout — go next after duration even if video not ended
         slideTimer = setTimeout(next, item.duration * 1000);
       } else {
-        // wait for video to end
         video.onended = next;
-        // safety timeout: if video has no duration metadata, go next after 60s
         slideTimer = setTimeout(next, 60 * 1000);
       }
     } else {
