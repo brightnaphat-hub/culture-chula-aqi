@@ -1,3 +1,4 @@
 [
-  { "type": "dashboard", "duration": 30 }
+  { "type": "dashboard", "duration": 30 },
+  { "type": "image", "src": "media/promo_oct.jpg", "duration": 15 }
 ]
